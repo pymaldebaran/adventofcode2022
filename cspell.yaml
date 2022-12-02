@@ -1,0 +1,34 @@
+---
+# Version of the setting file.  Always 0.2
+version: '0.2'
+# language - current active spelling language
+language: en
+# maximum number of problem reported
+maxNumberOfProblems: 100
+# the minimum length of a word before it is checked.
+minWordLength: 4
+# allow compound words
+allowCompoundWords: true
+# list of the names of the dictionaries to use. See Dictionaries below
+dictionaries:
+  - english
+  - python
+# list of words to be always considered correct
+words:
+  - mdlrc
+  - Wastl
+  - Giannetti
+  - Lucek
+  - Skalski
+# list of words to be always considered incorrect
+# This is useful for offensive words and common spelling errors.
+# For example "hte" should be "the"
+flagWords:
+  - hte
+# a list of words to be ignored (even if they are in the flagWords).
+ignoreWords: []
+# a list of globs to specify which files are to be ignored.
+# Example: node_modules/**
+ignorePaths:
+  - .gitignore
+  - cspell.yaml
