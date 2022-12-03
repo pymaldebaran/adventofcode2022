@@ -4,7 +4,6 @@
 import os
 from pathlib import Path
 
-import pytest
 from assertpy import assert_that, soft_assertions
 from rich import print
 from rich.markdown import Markdown
@@ -28,13 +27,19 @@ def most_calorie_elf(calorie_list: str) -> tuple[int, int]:
 
         Quantity of calories carried by this Elf
     """
-    return (0, 0)
+    elf_sep = "\n\n"
+    cal_sep = "\n"
+    total_cal = [
+        (idx, sum(int(calory) for calory in elf_list.split(cal_sep) if calory != "\n"))
+        for idx, elf_list in enumerate(calorie_list.split(elf_sep), start=1)
+    ]
+
+    return max(total_cal, key=lambda x: x[1])
 
 
-@pytest.mark.xfail(reason="No yet implemented!")
 def test_most_calorie_elf():  # noqa: D103
     with open("calories_list_sample.data") as cal_list:
-        elf, cal = most_calorie_elf(cal_list)
+        elf, cal = most_calorie_elf(cal_list.read())
 
     with soft_assertions():
         assert_that(elf).is_equal_to(4)
@@ -50,7 +55,7 @@ def main():
     print()
 
     with open("calories_list.data") as cal_list:
-        elf, cal = most_calorie_elf(cal_list)
+        elf, cal = most_calorie_elf(cal_list.read())
 
     print(f"The elf with the most calories is n°{elf}")
     print(f"And it carries {cal} calories")
