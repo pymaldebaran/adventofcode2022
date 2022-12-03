@@ -20,6 +20,7 @@ words:
   - Giannetti
   - Lucek
   - Skalski
+  - assertpy
 # list of words to be always considered incorrect
 # This is useful for offensive words and common spelling errors.
 # For example "hte" should be "the"
@@ -32,3 +33,4 @@ ignoreWords: []
 ignorePaths:
   - .gitignore
   - cspell.yaml
+  - pyproject.toml
