@@ -1,22 +1,18 @@
 #!/usr/bin/env python
 """Solution to day 1 challenge."""
 
-import os
 from pathlib import Path
 from typing import NamedTuple
 
-from assertpy import assert_that, soft_assertions
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.table import Table
-
 
 ELF_SEP = "\n\n"
 SNACK_SEP = "\n"
 RANK = ["🥇", "🥈", "🥉"]
 
-# Change the cwd to be able to use the script from anywhere
-os.chdir(Path(__file__).parent)
+BASE_DIR = Path(__file__).parent
 
 
 class ElfPackage(NamedTuple):
@@ -60,36 +56,13 @@ def most_calorie_elves(calorie_list: str) -> list[ElfPackage]:
     return sorted(total_cal, key=lambda x: x.cal, reverse=True)
 
 
-def test_most_calorie_elf():  # noqa: D103
-    with open("calories_list_sample.data") as cal_list:
-        pkg = most_calorie_elf(cal_list.read())
-
-    with soft_assertions():
-        assert_that(pkg.elf).is_equal_to(4)
-        assert_that(pkg.cal).is_equal_to(24000)
-
-
-def test_most_calorie_three_elves():  # noqa: D103
-    with open("calories_list_sample.data") as cal_list:
-        result = most_calorie_elves(cal_list.read())
-
-    assert_that(len(result)).is_greater_than_or_equal_to(3)
-    with soft_assertions():
-        assert_that(result[0].elf).is_equal_to(4)
-        assert_that(result[0].cal).is_equal_to(24000)
-        assert_that(result[1].elf).is_equal_to(3)
-        assert_that(result[1].cal).is_equal_to(11000)
-        assert_that(result[2].elf).is_equal_to(5)
-        assert_that(result[2].cal).is_equal_to(10000)
-
-
 def main():
     """Script to answer the question, with style."""
     console = Console()
 
-    with open("day01_part1.md") as part_one, open("day01_part2.md") as part_two, open(
-        "calories_list.data"
-    ) as cal_f:
+    with open(BASE_DIR / "day01_part1.md") as part_one, open(
+        BASE_DIR / "day01_part2.md"
+    ) as part_two, open(BASE_DIR / "calories_list.data") as cal_f:
         cal_list = cal_f.read()
         console.print(Markdown(part_one.read()))
 
@@ -118,7 +91,7 @@ def main():
         table.add_column("Elf", justify="left", style="bold green")
         table.add_column("Calories", justify="left", style="yellow")
         table.add_column("Rank", justify="center")
-        for pkg, medal in zip(top3[:3], RANK):
+        for pkg, medal in zip(top3[:3], RANK, strict=True):
             table.add_row(f"n°{pkg.elf}", f"{pkg.cal} cal", medal)
         console.print(table, justify="center")
 

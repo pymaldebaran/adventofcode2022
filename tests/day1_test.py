@@ -1,12 +1,16 @@
 """Tests for the day 1."""
 
+from pathlib import Path
+
 from assertpy import assert_that, soft_assertions
 
 from pymaoc2022.day01 import most_calorie_elf, most_calorie_elves
 
+TEST_DIR = Path(__file__).parent
+
 
 def test_most_calorie_elf():  # noqa: D103
-    with open("calories_list_sample.data") as cal_list:
+    with open(TEST_DIR / "calories_list_sample.data") as cal_list:
         pkg = most_calorie_elf(cal_list.read())
 
     with soft_assertions():
@@ -15,7 +19,7 @@ def test_most_calorie_elf():  # noqa: D103
 
 
 def test_most_calorie_three_elves():  # noqa: D103
-    with open("calories_list_sample.data") as cal_list:
+    with open(TEST_DIR / "calories_list_sample.data") as cal_list:
         result = most_calorie_elves(cal_list.read())
 
     assert_that(len(result)).is_greater_than_or_equal_to(3)
