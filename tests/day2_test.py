@@ -60,7 +60,7 @@ def test_outcome_score_win(weak: ElfShape, strong: MyShape):  # noqa: D103
     assert_that(outcome_score(elf=weak, me=strong)).is_equal_to(6)
 
 
-def test_compute_all_scores():  # noqa: D103
+def test_compute_all_scores_part_1():  # noqa: D103
     with open(TEST_DIR / "strategy_guide_sample.data") as strat:
         score = compute_all_scores(strat.read())
 
@@ -68,7 +68,21 @@ def test_compute_all_scores():  # noqa: D103
         assert_that(score).is_equal_to([8, 1, 6])
 
 
-def test_compute_global_score():  # noqa: D103
+def test_compute_global_score_part_1():  # noqa: D103
     with open(TEST_DIR / "strategy_guide_sample.data") as strat:
         score = compute_global_score(strat.read())
         assert_that(score).is_equal_to(15)
+
+
+def test_compute_all_scores_part_2():  # noqa: D103
+    with open(TEST_DIR / "strategy_guide_sample.data") as strat:
+        score = compute_all_scores(strat.read(), part=2)
+
+        assert_that(score).is_length(3)
+        assert_that(score).is_equal_to([4, 1, 7])
+
+
+def test_compute_global_score_part_2():  # noqa: D103
+    with open(TEST_DIR / "strategy_guide_sample.data") as strat:
+        score = compute_global_score(strat.read(), part=2)
+        assert_that(score).is_equal_to(12)

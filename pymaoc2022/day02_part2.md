@@ -18,5 +18,5 @@ shape to choose so the round ends as indicated. The example above now goes like 
 Now that you're correctly decrypting the ultra top secret strategy guide, you would get
 a total score of `12`.
 
-Following the Elf's instructions for the second column, **what would your total score be
-if everything goes exactly according to your strategy guide?**
+Following the Elf's instructions for the second column, **what would your total score**
+**be if everything goes exactly according to your strategy guide?**
