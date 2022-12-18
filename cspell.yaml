@@ -36,3 +36,5 @@ ignorePaths:
   - .gitignore
   - cspell.yaml
   - pyproject.toml
+  - '*.data'
+  - '*.md'
