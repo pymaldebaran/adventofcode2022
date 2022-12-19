@@ -9,7 +9,8 @@ from rich.markdown import Markdown
 
 BAG_SEP = "\n"
 
-BASE_DIR = Path(__file__).parent
+BASE_DIRE = Path(__file__).parent
+INSTRUCTIONS = BASE_DIRE / "instructions"
 
 
 def split_in_half(content: str) -> tuple[str, str]:
@@ -24,8 +25,7 @@ def split_in_half(content: str) -> tuple[str, str]:
     """
     length = len(content)
 
-    # We won't handle the not even strings
-    assert length % 2 == 0
+    assert length % 2 == 0, f"We won't handle the not even strings: {content}"
 
     return (content[: length // 2], content[length // 2 :])
 
@@ -126,9 +126,9 @@ def main():
     console = Console()
 
     with (
-        open(BASE_DIR / "day03_part1.md") as part_one,
-        # open(BASE_DIR / "day02_part2.md") as part_two,
-        open(BASE_DIR / "rucksack_contents.data") as ruck_f,
+        open(INSTRUCTIONS / "day03_part1.md") as part_one,
+        # open(INSTRUCTIONS / "day02_part2.md") as part_two,
+        open(BASE_DIRE / "rucksack_contents.data") as ruck_f,
     ):
         ruck_list = ruck_f.read()
         console.print(Markdown(part_one.read()))

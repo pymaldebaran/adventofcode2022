@@ -12,7 +12,8 @@ from rich.table import Table
 ROUND_SEP = "\n"
 ORDER_SEP = " "
 
-BASE_DIR = Path(__file__).parent
+BASE_DIRE = Path(__file__).parent
+INSTRUCTIONS = BASE_DIRE / "instructions"
 
 
 class ElfShape(StrEnum):
@@ -147,9 +148,9 @@ def main():
     console = Console()
 
     with (
-        open(BASE_DIR / "day02_part1.md") as part_one,
-        open(BASE_DIR / "day02_part2.md") as part_two,
-        open(BASE_DIR / "strategy_guide.data") as strat_f,
+        open(INSTRUCTIONS / "day02_part1.md") as part_one,
+        open(INSTRUCTIONS / "day02_part2.md") as part_two,
+        open(BASE_DIRE / "strategy_guide.data") as strat_f,
     ):
         strat_list = strat_f.read()
         console.print(Markdown(part_one.read()))

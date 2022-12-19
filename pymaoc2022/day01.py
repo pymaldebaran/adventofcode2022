@@ -12,7 +12,8 @@ ELF_SEP = "\n\n"
 SNACK_SEP = "\n"
 RANK = ["🥇", "🥈", "🥉"]
 
-BASE_DIR = Path(__file__).parent
+BASE_DIRE = Path(__file__).parent
+INSTRUCTIONS = BASE_DIRE / "instructions"
 
 
 class ElfPackage(NamedTuple):
@@ -60,9 +61,11 @@ def main():
     """Script to answer the question, with style."""
     console = Console()
 
-    with open(BASE_DIR / "day01_part1.md") as part_one, open(
-        BASE_DIR / "day01_part2.md"
-    ) as part_two, open(BASE_DIR / "calories_list.data") as cal_f:
+    with (
+        open(INSTRUCTIONS / "day01_part1.md") as part_one,
+        open(INSTRUCTIONS / "day01_part2.md") as part_two,
+        open(BASE_DIRE / "calories_list.data") as cal_f,
+    ):
         cal_list = cal_f.read()
         console.print(Markdown(part_one.read()))
 
