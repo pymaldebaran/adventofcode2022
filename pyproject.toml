@@ -11,13 +11,14 @@ rich = "^12.6.0"
 assertpy = "^1.1"
 pytest-sugar = "^0.9.6"
 pytest-icdiff = "^0.6"
+more-itertools = "^9.0.0"
 
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
 pre-commit = "^2.20.0"
-ruff = "^0.0.185"
+ruff = "^0.0.188"
 pytest-pudb = "^0.7.0"
 black = "^22.12.0"
 
