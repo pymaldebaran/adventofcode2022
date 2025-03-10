@@ -12,6 +12,7 @@ assertpy = "^1.1"
 pytest-sugar = "^0.9.6"
 pytest-icdiff = "^0.6"
 more-itertools = "^9.0.0"
+pyyaml = "^6.0.2"
 
 [tool.poetry.dev-dependencies]
 
